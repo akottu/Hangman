@@ -1,6 +1,6 @@
 
 
-// function newGame() {
+function newGame() {
 
     var teams =
     [
@@ -40,6 +40,8 @@
 
     var correctTeam = teams[Math.floor(Math.random() * teams.length)];
 
+    console.log(correctTeam);
+
     var numberOfWins = 0;
     var blanks = "";
     var numberOfLivesRemaining = 7;
@@ -51,14 +53,6 @@
     var numberOfLivesRemainingDisplay = document.getElementById("numberOfLivesRemainingDisplay");
     var lettersAlreadyGuessedDisplay = document.getElementById("lettersAlreadyGuessedDisplay");
 
-
-    // document.onkeyup = function(event) {
-
-    //     var userGuess = event.key;
-
-    //     alert(userGuess);
-
-    // }
 
     //fill in spaces automatically
     for(var i = 0; i < correctTeam.length; i++) {
@@ -72,19 +66,34 @@
 
     blanksDisplay.textContent = blanks;
 
+    console.log(correctTeam);
 
-    if (blanks.indexOf("_") != -1 || numberOfLivesRemaining > 0){
+
+    if (blanks.indexOf("_") != -1 && numberOfLivesRemaining > 0){
 
         document.onkeyup = function(event) {
 
+
             var userGuess = event.key;
 
-            lettersAlreadyGuessed += userGuess + " ";
-            lettersAlreadyGuessedDisplay.textContent = lettersAlreadyGuessed;
+            console.log(correctTeam);
+
+            console.log(userGuess);
+
+            console.log(correctTeam.indexOf(userGuess.toString));
+
+            console.log(acceptableGuesses.indexOf(userGuess));
+
+
+            if(lettersAlreadyGuessed.indexOf(userGuess) == -1) {
+                lettersAlreadyGuessed += userGuess + " ";
+                lettersAlreadyGuessedDisplay.textContent = lettersAlreadyGuessed;
+            }
+            
 
             if(acceptableGuesses.indexOf(userGuess) != -1) {
                 if(correctTeam.indexOf(userGuess) != -1) {
-                    blanks[correctTeam.indexOf(userGuess) * 2];
+                    blanks[correctTeam.indexOf(userGuess) * 2] = userGuess;
                     blanksDisplay.textContent = blanks;
                 }
                 else {
@@ -113,9 +122,9 @@
     }
 
 
-// }
+}
 
-// newGame();
+newGame();
 
 // var computerChoices = ["r", "p", "s"];
 
