@@ -40,9 +40,12 @@ function newGame() {
 
     var correctTeam = teams[Math.floor(Math.random() * teams.length)];
 
+    correctTeam = correctTeam.toLocaleLowerCase;
+
     console.log(correctTeam);
 
     var numberOfWins = 0;
+    var numberOfLosses = 0;
     var blanks = "";
     var numberOfLivesRemaining = 7;
     var lettersAlreadyGuessed = "";
@@ -69,10 +72,10 @@ function newGame() {
     console.log(correctTeam);
 
 
+    document.onkeyup = function(event) {
     if (blanks.indexOf("_") != -1 && numberOfLivesRemaining > 0){
 
-        document.onkeyup = function(event) {
-
+        
 
             var userGuess = event.key;
 
@@ -80,7 +83,7 @@ function newGame() {
 
             console.log(userGuess);
 
-            console.log(correctTeam.indexOf(userGuess.toString));
+            console.log(correctTeam.indexOf(userGuess));
 
             console.log(acceptableGuesses.indexOf(userGuess));
 
@@ -93,7 +96,15 @@ function newGame() {
 
             if(acceptableGuesses.indexOf(userGuess) != -1) {
                 if(correctTeam.indexOf(userGuess) != -1) {
-                    blanks[correctTeam.indexOf(userGuess) * 2] = userGuess;
+
+                    for (var i = 0; i < correctTeam.length; i++) {
+
+                        if (userGuess === currentTeam.charAt(i)) {
+        
+                            blanks[i] = currentTeam.charAt(i);
+                        }
+                    }
+                    console.log(blanks);
                     blanksDisplay.textContent = blanks;
                 }
                 else {
@@ -105,23 +116,31 @@ function newGame() {
                 alert("press a lexicographic key");
             }
 
-        }
+            console.log("hi")
+
+        
     }
 
     if(blanks.indexOf("_") == -1) {
         numberOfWins++;
         numberOfWinsDisplay.textContent = numberOfWins;
-        // newGame();
+        newGame();
     }
 
     if(numberOfLivesRemaining == 0) {
         numberOfLosses++;
         numberOfLossesDisplay.textContent = numberOfLosses;
-        // newGame();
+        newGame();
 
+    }
     }
 
 
+
+}
+
+String.prototype.replaceAt=function(index, replacement) {
+    return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
 }
 
 newGame();
