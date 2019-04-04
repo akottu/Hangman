@@ -126,7 +126,7 @@ function newGame() {
             numberOfWins++;
             numberOfWinsDisplay.textContent = numberOfWins;
             alert("You got it! It's the " + correctTeam + "!");
-            document.getElementById("logos").src = "assets/images/" + correctTeam.split(" ")[correctTeam.split(" ").length - 1].toLocaleLowerCase() + ".png";
+            document.getElementById("logos").src = "../../assets/images/" + correctTeam.split(" ")[correctTeam.split(" ").length - 1].toLocaleLowerCase() + ".png";
             newGame();
         }
 

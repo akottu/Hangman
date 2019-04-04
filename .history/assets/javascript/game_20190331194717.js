@@ -3,8 +3,6 @@ var numberOfLosses = 0;
 
 function newGame() {
 
-    // document.getElementById("logos").src = "././assets/image/nba-logo.png";
-
     var teams =
     [
         "Atlanta Hawks",
@@ -71,9 +69,7 @@ function newGame() {
 
     blanksDisplay.textContent = blanks;
 
-    // blanks.replace(2) = "a";
 
-    
 
     document.onkeyup = function(event) {
 
@@ -98,15 +94,15 @@ function newGame() {
                 if(teamToGuess.indexOf(userGuess) != -1) {
 
                     
-                    for (var i = 0; i < correctTeam.length; i++) {
+                    // for (var i = 0; i < correctTeam.length; i++) {
 
-                        if (userGuess === teamToGuess.charAt(i)) {
-                            console.log(correctTeam.charAt(i).toLocaleLowerCase());
-                            blanks = blanks.replaceAt(i*2,correctTeam.charAt(i));
-                            blanksDisplay.textContent = blanks;
-                        }
-                    }
-                    console.log(blanks);
+                    //     if (userGuess === teamToGuess.charAt(i)) {
+        
+                    //         blanks[i] = correctTeam.charAt(i);
+                    //         blanksDisplay.textContent = blanks;
+                    //     }
+                    // }
+                    // console.log(blanks);
                 }
                 else {
                     numberOfLivesRemaining--;
@@ -118,23 +114,18 @@ function newGame() {
             }
 
             console.log("hi")
-            console.log(correctTeam.split(" ")[correctTeam.split(" ").length - 1]);
     
     }
 
         if(blanks.indexOf("_") == -1) {
             numberOfWins++;
             numberOfWinsDisplay.textContent = numberOfWins;
-            alert("You got it! It's the " + correctTeam + "!");
-            document.getElementById("logos").src = "assets/images/" + correctTeam.split(" ")[correctTeam.split(" ").length - 1].toLocaleLowerCase() + ".png";
             newGame();
         }
 
         if(numberOfLivesRemaining == 0) {
             numberOfLosses++;
             numberOfLossesDisplay.textContent = numberOfLosses;
-            alert("You didn't get it! It's the " + correctTeam + "!");
-            document.getElementById("logos").src = "assets/images/" + correctTeam.split(" ")[correctTeam.split(" ").length - 1].toLocaleLowerCase() + ".png";
             newGame();
 
         }

@@ -3,8 +3,6 @@ var numberOfLosses = 0;
 
 function newGame() {
 
-    // document.getElementById("logos").src = "././assets/image/nba-logo.png";
-
     var teams =
     [
         "Atlanta Hawks",
@@ -118,7 +116,6 @@ function newGame() {
             }
 
             console.log("hi")
-            console.log(correctTeam.split(" ")[correctTeam.split(" ").length - 1]);
     
     }
 
@@ -126,15 +123,13 @@ function newGame() {
             numberOfWins++;
             numberOfWinsDisplay.textContent = numberOfWins;
             alert("You got it! It's the " + correctTeam + "!");
-            document.getElementById("logos").src = "assets/images/" + correctTeam.split(" ")[correctTeam.split(" ").length - 1].toLocaleLowerCase() + ".png";
+            
             newGame();
         }
 
         if(numberOfLivesRemaining == 0) {
             numberOfLosses++;
             numberOfLossesDisplay.textContent = numberOfLosses;
-            alert("You didn't get it! It's the " + correctTeam + "!");
-            document.getElementById("logos").src = "assets/images/" + correctTeam.split(" ")[correctTeam.split(" ").length - 1].toLocaleLowerCase() + ".png";
             newGame();
 
         }
